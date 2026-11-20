@@ -23,7 +23,7 @@ Before designing anything, we interviewed a **wholesale and retail distributor i
 
 1. **The "With-Bill vs. Without-Bill" Trap:** Suppliers quote dual rates. While cash/unbilled rates work for end-consumer (B2C) retail, GST-registered (B2B) factories that buy unbilled lose **18% Input Tax Credit (ITC)**, forfeit income-tax deductions, and cannot generate valid **E-Way bills** on consignments above ₹50,000.
 2. **Transport & *Hamali* Distortion:** *Ex-Godown* rates cover material only at the supplier's door — the buyer pays separately for tempo hire and unloading labour (*hamali*). Owners comparing raw per-kg numbers on WhatsApp routinely miss this.
-3. **Direct Mills vs. Local Wholesalers:** Direct manufacturers offer lower base rates and Mill Test Certificates (MTCs) on larger order quantities. Local wholesalers rescue urgent jobs with smaller quantities and faster same-day delivery.
+3. **Direct Manufacturers vs. Local Wholesalers:** Direct manufacturers offer lower base rates and Manufacturer Test Certificates (MTCs) on larger order quantities. Local wholesalers rescue urgent jobs with smaller quantities and faster same-day delivery.
 
 Full anonymized field notes → [`field-research/magadi_distributor_faq.md`](field-research/magadi_distributor_faq.md) · Sample RFQs & Quote Comparisons → [`field-research/examples.md`](field-research/examples.md)
 
@@ -31,38 +31,15 @@ Full anonymized field notes → [`field-research/magadi_distributor_faq.md`](fie
 
 ## 3. How It Works — 4-Stage Workflow
 
-![Architecture Flowchart](docs/flowchart.png)
-
-```
-Owner Voice/Drawing
-       │
-       ▼
-┌──────────────────┐    ┌──────────────────────┐    ┌────────────────────┐    ┌─────────────────────┐
-│  STAGE 1         │    │  STAGE 2             │    │  STAGE 3           │    │  STAGE 4            │
-│  INTAKE AGENT    │───▶│  SOURCING AGENT      │───▶│  COST ENGINE       │───▶│  APPROVAL & CLOSE   │
-│  (LangGraph)     │    │  (LangGraph)         │    │  (Pure Python)     │    │  (LangGraph HITL)   │
-│                  │    │                      │    │                    │    │                     │
-│ • Parses voice + │    │ • Wave 1: Preferred  │    │ • 35+ deterministic│    │ • ≤₹5k auto-approve │
-│   drawings into  │    │   direct mill        │    │   ₹ rules          │    │ • ≤₹50k one-tap     │
-│   structured     │    │ • Wave 2: Rival mills│    │ • Full landed cost │    │ • >₹50k Voice+PIN   │
-│   order schema   │    │ • Wave 3: Local      │    │   formula          │    │ • 3-way PO/challan/ │
-│ • Checks stock,  │    │   wholesaler (last   │    │ • GSTIN/GSTR-3B    │    │   invoice match     │
-│   open POs,      │    │   resort only)       │    │   verification     │    │ • Owner releases    │
-│   substitutes    │    │ • Auto failure       │    │ • E-Way + MSME     │    │   all payments      │
-│ • Restates specs │    │   recovery           │    │   45-day checks    │    │                     │
-│   before any     │    │                      │    │ • WhatsApp sandbox │    │                     │
-│   supplier       │    │                      │    │   (prompt-inject   │    │                     │
-│   contact        │    │                      │    │   blocked)         │    │                     │
-└──────────────────┘    └──────────────────────┘    └────────────────────┘    └─────────────────────┘
-```
+![4-Stage Workflow Flowchart](docs/workflow_flowchart.png)
 
 ### Stage 1 — Intake Agent
 Parses voice notes (Kannada / Hindi / English) or customer drawings into a structured order schema. Checks existing stock, open POs, in-transit stock, and approved substitutes. Restates parsed specs to the owner **before contacting any supplier.**
 
 ### Stage 2 — Sourcing Agent (3-Wave Waterfall)
-- **Wave 1:** Preferred direct manufacturer — lowest rate + Mill Test Certificate.
-- **Wave 2:** Rival direct mills — benchmark pricing.
-- **Wave 3:** Local wholesalers — **only** if mill MOQ too large or ETA missed.
+- **Wave 1:** Preferred direct manufacturer — lowest rate + Manufacturer Test Certificate.
+- **Wave 2:** Rival direct manufacturers — benchmark pricing.
+- **Wave 3:** Local wholesalers — **only** if manufacturer MOQ too large or ETA missed.
 - **Automatic Recovery:** Supplier times out or hikes price mid-quote? Agent switches to next-best — zero manual follow-up.
 
 ### Stage 3 — Cost Engine (Deterministic Python)
@@ -134,7 +111,8 @@ tech4bharat-procurement-copilot/
 ├── README.md
 ├── docs/
 │   ├── flowchart.png
-│   └── presentation.pdf
+│   ├── presentation.pdf
+│   └── workflow_flowchart.png
 └── field-research/
     ├── examples.md
     └── magadi_distributor_faq.md

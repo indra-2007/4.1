@@ -76,12 +76,12 @@ This trade-off is real and context-dependent. It is not always correct to prefer
 
 | Scenario | Preferred Source | Why |
 |---|---|---|
-| Large order quantity, 3–7 days lead time acceptable | **Direct manufacturer (mill)** | Lower base rate per kg/unit, Mill Test Certificates (MTCs) for grade verification, BIS marking where required |
+| Large order quantity, 3–7 days lead time acceptable | **Direct manufacturer** | Lower base rate per kg/unit, Manufacturer Test Certificates (MTCs) for grade verification, BIS marking where required |
 | Urgent job, small quantity, same-day delivery needed | **Local wholesaler** | Maintains ready stock in smaller lots, faster delivery within the industrial cluster |
-| Mill MOQ exceeds 90 days of safe demand | **Local wholesaler** | Locking up capital in excess inventory is costlier than the per-unit premium |
+| Manufacturer MOQ exceeds 90 days of safe demand | **Local wholesaler** | Locking up capital in excess inventory is costlier than the per-unit premium |
 | Supplier's GSTIN is cancelled or filing is lapsed | **Neither — filtered out** | Invalid GSTIN means ITC is not claimable and E-Way bill cannot be generated |
 
-**What our system does:** The Sourcing Agent runs a 3-wave waterfall — preferred direct mill first, rival direct mills second, local wholesalers third (and only if mill MOQ or ETA fails the owner's constraints). The Cost Engine then applies the same risk-adjusted ₹ formula to all options before comparison.
+**What our system does:** The Sourcing Agent runs a 3-wave waterfall — preferred direct manufacturer first, rival direct manufacturers second, local wholesalers third (and only if manufacturer MOQ or ETA fails the owner's constraints). The Cost Engine then applies the same risk-adjusted ₹ formula to all options before comparison.
 
 ---
 
@@ -111,7 +111,7 @@ A known fraud tactic in informal trade involves a supplier (or someone impersona
 | "Without bill" looks cheaper but costs more for GST-registered buyers | `C_itc_loss` in the risk-adjusted cost formula; auto-computed ITC loss per supplier |
 | Ex-Godown quotes miss freight + *hamali* | All quotes normalised to Total Landed Cost at factory gate before comparison |
 | Panic buying leads to fastest-reply wins | Pre-Order Sanity Gate: stock check + open PO check before any supplier outreach |
-| Direct mill cheaper on large orders; wholesaler better for urgent small orders | 3-Wave Waterfall (mill → rival mill → wholesaler), controlled by MOQ cap and ETA deadline |
+| Direct manufacturer cheaper on large orders; wholesaler better for urgent small orders | 3-Wave Waterfall (direct manufacturer → rival manufacturer → wholesaler), controlled by MOQ cap and ETA deadline |
 | Lapsed GSTIN means no ITC and no E-Way bill | GSTIN validity + GSTR-3B 2-month filing check; auto-reject if failed and ITC needed |
 | Bank-detail change messages in WhatsApp are a fraud vector | Hard freeze + fraud alert on any bank/UPI change; WhatsApp chat sandboxed as untrusted |
 | Owners need speed but make costly decisions under pressure | Deal Review screen: top 2 options, exact rupee savings, reasons others filtered — one tap to approve |

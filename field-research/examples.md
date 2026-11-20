@@ -171,13 +171,13 @@
 
 ---
 
-## Example 4: MOQ Trap — Direct Mill Minimum Order Exceeds Safe Demand
+## Example 4: MOQ Trap — Direct Manufacturer Minimum Order Exceeds Safe Demand
 
 ### Context
 
 Owner needs **MS Flat Bar 25×6mm, 200 kg** for a specific customer job.
 
-Preferred direct mill (Supplier D) quotes ₹58/kg — the best price — but their **minimum order quantity (MOQ) is 2,000 kg.**
+Preferred direct manufacturer (Supplier D) quotes ₹58/kg — the best price — but their **minimum order quantity (MOQ) is 2,000 kg.**
 
 ### Cost Engine Analysis
 
@@ -185,13 +185,13 @@ Preferred direct mill (Supplier D) quotes ₹58/kg — the best price — but th
 |---|---|
 | Owner's monthly consumption of this SKU | ~300 kg/month |
 | Safe demand ceiling (90-day cap) | 300 × 3 = **900 kg** |
-| Mill MOQ | **2,000 kg** — exceeds 90-day cap by 1,100 kg |
+| Manufacturer MOQ | **2,000 kg** — exceeds 90-day cap by 1,100 kg |
 | Excess holding cost | 1,100 kg × ₹58 × (18% APR / 365) × 90 days = **₹2,834** extra |
 | Capital locked up in excess stock | ₹63,800 for ~6 months |
 | Local wholesaler alternative | ₹62/kg, 200 kg, delivered today |
-| True cost comparison | Mill: ₹58 + ₹2,834 holding ÷ 200 kg = **₹72.17/kg effective** vs. Wholesaler: **₹62/kg** |
+| True cost comparison | Manufacturer: ₹58 + ₹2,834 holding ÷ 200 kg = **₹72.17/kg effective** vs. Wholesaler: **₹62/kg** |
 
-**Deal Review:** Wholesaler recommended for this order. Mill flagged with explanation: "Mill MOQ 2,000 kg exceeds your 90-day safe demand of 900 kg. Excess holding cost makes the effective rate ₹72.17/kg vs. ₹62/kg from local wholesaler."
+**Deal Review:** Wholesaler recommended for this order. Manufacturer flagged with explanation: "Manufacturer MOQ 2,000 kg exceeds your 90-day safe demand of 900 kg. Excess holding cost makes the effective rate ₹72.17/kg vs. ₹62/kg from local wholesaler."
 
 ---
 
