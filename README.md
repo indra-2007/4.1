@@ -2,8 +2,8 @@
 
 **Tech4Bharat 2026 — JanAI Mass Entrepreneurship Challenge | Theme 4: Manufacturing & Industry | Problem 4.1**
 
-> **Pitch Deck:** [`docs/Tech4Bharat_2026_Pitch_Deck.pdf`](docs/Tech4Bharat_2026_Pitch_Deck.pdf)
-> **Architecture Diagram:** [`docs/architecture_flowchart.png`](docs/architecture_flowchart.png)
+> **Pitch Deck:** [`docs/presentation.pdf`](docs/presentation.pdf)
+> **Architecture Diagram:** [`docs/flowchart.png`](docs/flowchart.png)
 
 ---
 
@@ -25,11 +25,13 @@ Before designing anything, we interviewed a **wholesale and retail distributor i
 2. **Transport & *Hamali* Distortion:** *Ex-Godown* rates cover material only at the supplier's door — the buyer pays separately for tempo hire and unloading labour (*hamali*). Owners comparing raw per-kg numbers on WhatsApp routinely miss this.
 3. **Direct Mills vs. Local Wholesalers:** Direct manufacturers offer lower base rates and Mill Test Certificates (MTCs) on larger order quantities. Local wholesalers rescue urgent jobs with smaller quantities and faster same-day delivery.
 
-Full anonymized field notes → [`field-research/magadi_distributor_and_shopfloor_notes.md`](field-research/magadi_distributor_and_shopfloor_notes.md)
+Full anonymized field notes → [`field-research/magadi_distributor_faq.md`](field-research/magadi_distributor_faq.md) · Sample RFQs & Quote Comparisons → [`field-research/examples.md`](field-research/examples.md)
 
 ---
 
 ## 3. How It Works — 4-Stage Workflow
+
+![Architecture Flowchart](docs/flowchart.png)
 
 ```
 Owner Voice/Drawing
@@ -131,11 +133,11 @@ Post-delivery: 3-way match (PO / challan / invoice), 24–48 hr damage alert, GS
 tech4bharat-procurement-copilot/
 ├── README.md
 ├── docs/
-│   ├── architecture_flowchart.png
-│   └── Tech4Bharat_2026_Pitch_Deck.pdf
+│   ├── flowchart.png
+│   └── presentation.pdf
 └── field-research/
-    ├── magadi_distributor_and_shopfloor_notes.md
-    └── sample_rfqs_anonymized.md
+    ├── examples.md
+    └── magadi_distributor_faq.md
 ```
 
 > Source code (`src/`), backtests (`backtest/`), and simulated integrations will be added as the build progresses. This repository is the Phase 1 research, design, and architecture submission.
