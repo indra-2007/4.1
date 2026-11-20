@@ -74,6 +74,10 @@ Risk-Adjusted Cost (₹) =
 
 Post-delivery: 3-way match (PO / challan / invoice), 24–48 hr damage alert, GSTR-2B recon, supplier rating updated.
 
+### System Architecture Flowchart
+
+![System Architecture Flowchart](docs/flowchart.png)
+
 ---
 
 ## 4. Safety & Control Boundaries
